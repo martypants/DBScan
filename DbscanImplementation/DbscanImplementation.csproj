@@ -34,10 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Oneview.DataExtract.DatabaseAccess">
-      <HintPath>..\..\..\..\git\OneViewDataExtract\Oneview.DataExtract\DatabaseAccess\bin\Debug\Oneview.DataExtract.DatabaseAccess.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -58,6 +56,13 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\kd-sharp-master\kd-sharp-master\KDTree\KDTree.csproj">
+      <Project>{33A00A90-C02E-474B-A8C0-3B0559873EA0}</Project>
+      <Name>KDTree</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

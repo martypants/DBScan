@@ -1,6 +1,9 @@
+using DbscanImplementation;
+using KDTree;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
 
 namespace DbscanImplementation
 {
@@ -87,6 +90,36 @@ namespace DbscanImplementation
             }
         }
 
+        //private static void ExpandCluster(KdTree<DbscanPoint> tree, DbscanPoint p, DbscanPoint[] neighborPts, int c, double epsilon, int minPts)
+        //{
+        //    p.ClusterId = c;
+
+        //    var queue = new Queue<DbscanPoint>(neighborPts);
+        //    while (queue.Count > 0)
+        //    {
+        //        var point = queue.Dequeue();
+        //        if (point.ClusterId == (int)ClusterIds.UNCLASSIFIED)
+        //        {
+        //            point.ClusterId = c;
+        //        }
+
+        //        if (point.IsVisited)
+        //        {
+        //            continue;
+        //        }
+
+        //        point.IsVisited = true;
+        //        var neighbors = RegionQuery(tree, point.ClusterPoint.point, epsilon);
+        //        if (neighbors.Length >= minPts)
+        //        {
+        //            foreach (var neighbor in neighbors.Where(neighbor => !neighbor.IsVisited))
+        //            {
+        //                queue.Enqueue(neighbor);
+        //            }
+        //        }
+        //    }
+        //}
+
         /// <summary>
         /// Checks and searchs neighbor points for given point
         /// </summary>
@@ -98,5 +131,27 @@ namespace DbscanImplementation
         {
             neighborPts = allPoints.Where(x => _metricFunc(point, x.ClusterPoint) <= epsilon).ToArray();
         }
+
+
+        //private void RegionQuery(KDTree<DbscanPoint> tree, PointD p, double epsilon, out DbscanPoint[] neighborPts)
+        //{
+        //    int totalCount = 0;
+        //    var pIter = tree.NearestNeighbors(new double[] { p.X, p.Y }, 10, epsilon);
+        //    while (pIter.MoveNext())
+        //    {
+        //        totalCount++;
+        //    }
+        //    neighborPts = new DbscanPoint[totalCount];
+        //    int currCount = 0;
+        //    pIter.Reset();
+        //    while (pIter.MoveNext())
+        //    {
+        //        neighborPts[currCount] = pIter.Current;
+        //        currCount++;
+        //    }
+
+        //    return;
+        //}
+
     }
 }
